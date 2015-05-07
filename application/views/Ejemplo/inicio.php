@@ -3,34 +3,20 @@
 	<head>
 		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
 		<script type="text/javascript">
-	        $(document).ready(function(){
-			     $("#boton-enviar").click(function(){
-			        nombre = $("#nombre").val();
-		          	$.ajax({
-		           		url:"<?php echo base_url().'index.php/EjemploController/nuevo_usuario'; ?>",
-		           		type:'POST',
-		           		data:{nombre:nombre},
-		           		error: function(req, err){ console.log('my message' + err); }
-			        });   
-			        console.log("Despues de .click");
-			     });  
-			});
+			$(document).ready(function(){
+	          	$("h4:contains('A PHP Error was encountered')").parent().remove();
+	         	$("#mostrar-departments").click(function(){
+	            	var url = 'http://localhost/ci/index.php/EjemploController/consulta_simple';
+	              	$.post(url,function(resp){
+	                	$(".respuesta").html("\nRespuesta: "+resp);
+	            	});
+	         	});
+	        });
     	</script> 
 	</head>
 	<body>
-		<form id="formulario">
-			<div id="campos-registro">
-				<div id="campo-nombre">
-					<label for="nombre">Nombre:</label>
-					<input id="nombre" type="text" name="nombre" placeholder="escriba nombre"/>
-				</div>
-			</div>
-
-			<div id="buttons">
-				<input id="boton-enviar" type="button" value="Enviar mensaje" title="Enviar mensaje"/>
-				<input type="reset" value="limpiar"/>
-				<input id="mostrar-departments" type="button" value="Mostrar"/>
-			</div>
-		</form>
+		<div class="respuesta">
+			<input id="mostrar-departments" type="button" value="Consulta simple"/>
+		</div>
 	</body>
 </html>

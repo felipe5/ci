@@ -23,5 +23,4 @@ class EjemploController extends CI_Controller {
 		$datos['departments'] = $this->EjemploModel->consulta_simple();
     	$this->load->view('Ejemplo/listar_departamentos', $datos);
 		}
-
 }?>
