@@ -8,8 +8,8 @@
       $departments;
       foreach($departments as $department): ?>
       <tr>
-        <td><?php echo $department['dept_no'] ?></td>
-        <td><?php echo $department['dept_name'] ?></td>
+        <td><?php echo $department->dept_no ?></td>
+        <td><?php echo $department->dept_name ?></td>
       </tr>
     <?php endforeach;
      ?>

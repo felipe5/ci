@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+		<script src="<?php echo base_url()."/assets/js/jquery-2.1.1.js" ?>"></script>
 		<script type="text/javascript">
 			$(document).ready(function(){
 	          	$("h4:contains('A PHP Error was encountered')").parent().remove();
@@ -15,8 +15,11 @@
     	</script> 
 	</head>
 	<body>
+		<input id="mostrar-departments" type="button" value="Consulta simple"/>
+		<input id="mostrar2" type="button" value="Consulta media"/>
+		<input id="mostrar3" type="button" value="Consulta Compleja"/>
 		<div class="respuesta">
-			<input id="mostrar-departments" type="button" value="Consulta simple"/>
+			
 		</div>
 	</body>
 </html>
