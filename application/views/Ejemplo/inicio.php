@@ -29,6 +29,7 @@
 			<div id="buttons">
 				<input id="boton-enviar" type="button" value="Enviar mensaje" title="Enviar mensaje"/>
 				<input type="reset" value="limpiar"/>
+				<input id="mostrar-departments" type="button" value="Mostrar"/>
 			</div>
 		</form>
 	</body>
