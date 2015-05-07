@@ -15,12 +15,13 @@ class EjemploController extends CI_Controller {
 		$nombre = $this->input->post("nombre");
 		$this->EjemploModel->insert_usuario($nombre);
 	}
-	public function consulta1(){
-		 $query = $this->db->query("SELECT * from departments;");
-		 foreach ($query->result() as $row){
-		    echo $row->dept_no;
-		    echo $row->dept_name;
-
+	public function consulta_simple(){
+		 // $query = $this->db->query("SELECT * from departments;");
+		 // foreach ($query->result() as $row){
+		 //    echo $row->dept_no;
+		 //    echo $row->dept_name;
+		$datos['departments'] = $this->EjemploModel->consulta_simple();
+    	$this->load->view('Ejemplo/listar_departamentos', $datos);
 		}
-	}
+
 }?>
