@@ -11,11 +11,13 @@ class EjemploController extends CI_Controller {
 		$this->load->view('Ejemplo/Inicio');
 	}
 	public function consulta_simple(){
-		 // $query = $this->db->query("SELECT * from departments;");
-		 // foreach ($query->result() as $row){
-		 //    echo $row->dept_no;
-		 //    echo $row->dept_name;
 		$datos['departments'] = $this->EjemploModel->consulta_simple();
     	$this->load->view('Ejemplo/consulta_simple', $datos);
-		}
+	}
+	public function consulta_media(){
+
+	}
+	public function consulta_compleja(){
+		
+	}
 }?>
