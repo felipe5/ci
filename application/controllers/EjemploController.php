@@ -15,9 +15,11 @@ class EjemploController extends CI_Controller {
     	$this->load->view('Ejemplo/consulta_simple', $datos);
 	}
 	public function consulta_media(){
-
+		$datos['personasF'] = $this->EjemploModel->consulta_media();
+		$this->load->view('Ejemplo/consulta_media', $datos);
 	}
 	public function consulta_compleja(){
-		
+		$datos['Personas'] = $this->EjemploModel->consulta_compleja();
+		$this->load->view('Ejemplo/consulta_compleja', $datos);
 	}
 }?>
