@@ -8,7 +8,7 @@ class EjemploController extends CI_Controller {
 
 	function index(){
 		$this->load->view('Ejemplo/Inicio');
-		$this->output->cache(500);
+		//$this->output->cache(500);
 	}
 	public function consulta_simple(){
 		$datos['departments'] = $this->EjemploModel->consulta_simple();
