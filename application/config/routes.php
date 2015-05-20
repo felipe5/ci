@@ -40,6 +40,15 @@
 
 $route['default_controller'] = "EjemploController";
 $route['404_override'] = '';
+// $route['EjemploController/pagina/(:num)'] = 'EjemploController';//cuando no sea la primera página
+// $route['EjemploController/pagina'] = 'EjemploController';//cuando sea la primera página
+
+// $route['EjemploController/consulta_compleja/pagina/(:num)'] = 'EjemploController/consulta_compleja';//cuando no sea la primera página
+// $route['EjemploController/consulta_compleja/pagina'] = 'EjemploController/consulta_compleja';//cuando sea la primera página
+
+// $route['EjemploController/consulta_compleja/pagina/(:num)'] = 'EjemploController/consulta_compleja';//cuando no sea la primera página
+// $route['EjemploController/consulta_compleja/pagina'] = 'EjemploController/consulta_compleja';//cuando sea la primera página
+
 
 
 /* End of file routes.php */
