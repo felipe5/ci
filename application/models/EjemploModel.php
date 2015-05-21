@@ -5,13 +5,56 @@ class EjemploModel extends CI_Model{
     public function construct(){
         parent::__construct();
     }
-    public function consulta_simple(){
-    	$sql = $this->db->query('SELECT dept_no, dept_name from departments WHERE dept_name="Finance"');
-   		return $sql->result();
+    public function filas_simple(){
+        $this->db->select('dept_no, dept_name');
+        $this->db->from('departments');
+        $this->db->where('dept_name', 'Finance');
+        $consulta = $this->db->get();
+        return  $consulta->num_rows();
     }
-    public function consulta_media(){
-    	$sql = $this->db->query('SELECT first_name, last_name FROM employees WHERE gender="F" and emp_no>100000 AND emp_no<200000');
-   		return $sql->result();
+    public function consulta_simple($por_pagina,$segmento){
+    	// $sql = $this->db->query('SELECT dept_no, dept_name from departments WHERE dept_name="Finance"');
+   		// return $sql->result();
+        $this->db->select('dept_no, dept_name');
+        $this->db->from('departments');
+        $this->db->where('dept_name', 'Finance');
+        $this->db->limit($por_pagina,$segmento);
+        $consulta = $this->db->get();
+        if($consulta->num_rows()>0){
+                foreach($consulta->result() as $fila){
+                    $data[] = $fila;
+                }
+                return $data;
+        }
+    }
+    public function filas_media(){
+        $this->db->select('first_name, last_name');
+        $this->db->from('employees');
+        $this->db->where('gender', 'f');
+        // $this->db->where('emp_no >', 100000);
+        // $this->db->where('emp_no <', 200000);
+        $consulta = $this->db->get();
+        return  $consulta->num_rows();
+        // return 4050;
+    }
+    // public function consulta_media(){
+    // 	$sql = $this->db->query('SELECT first_name, last_name FROM employees WHERE gender="F" and emp_no>100000 AND emp_no<200000');
+   	// 	return $sql->result();
+    // }
+    public function consulta_media($por_pagina,$segmento){
+        $this->db->select('first_name, last_name');
+        $this->db->from('employees');
+        $this->db->where('gender', 'f');
+        // $this->db->where('emp_no >', 100000);
+        // $this->db->where('emp_no <', 200000);
+        $this->db->limit($por_pagina,$segmento);
+        $consulta = $this->db->get();
+        if($consulta->num_rows()>0){
+                foreach($consulta->result() as $fila){
+                    $data[] = $fila;
+                }
+                return $data;
+        }
     }
     //Consulta comppleja sin paginacion
     // public function consulta_compleja(){ 
@@ -28,17 +71,17 @@ class EjemploModel extends CI_Model{
     // }
 
     function filas(){//CAlcula las filas ineficientemente
-        // $this->db->select('first_name, last_name, salary, title, dept_emp.from_date , dept_emp.to_date, dept_name');
-        // $this->db->from('titles');
-        // $this->db->join('employees','titles.emp_no = employees.emp_no');
-        // $this->db->join('salaries', 'salaries.emp_no = employees.emp_no');
-        // $this->db->join('dept_emp','employees.emp_no = dept_emp.emp_no');
-        // $this->db->join('departments', 'dept_emp.dept_no = departments.dept_no');
-        // $this->db->where('employees.emp_no <', 90500);
-        // $this->db->where('employees.emp_no >', 90000);
-        // $consulta = $this->db->get();
-        // return  $consulta->num_rows() ;
-        return 8650;
+        $this->db->select('first_name, last_name, salary, title, dept_emp.from_date , dept_emp.to_date, dept_name');
+        $this->db->from('titles');
+        $this->db->join('employees','titles.emp_no = employees.emp_no');
+        $this->db->join('salaries', 'salaries.emp_no = employees.emp_no');
+        $this->db->join('dept_emp','employees.emp_no = dept_emp.emp_no');
+        $this->db->join('departments', 'dept_emp.dept_no = departments.dept_no');
+        $this->db->where('employees.emp_no <', 90500);
+        $this->db->where('employees.emp_no >', 90000);
+        $consulta = $this->db->get();
+        return  $consulta->num_rows() ;
+        // return 8650;
     }
     public function consulta_compleja($por_pagina,$segmento){
         $this->db->select('first_name, last_name, salary, title, dept_emp.from_date , dept_emp.to_date, dept_name');

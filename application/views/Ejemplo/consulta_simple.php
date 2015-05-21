@@ -13,4 +13,5 @@
       </tr>
     <?php endforeach;?>
   </tbody>
+  <?=$this->pagination->create_links()?> 
 </table>
